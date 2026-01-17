@@ -2,6 +2,8 @@
 
 A sleek, modern, and lightweight **Code Playground** integrated directly into your VS Code Side Bar. Run code snippets, test inputs, and keep notes without switching context.
 
+![Code Playground Demo](media/CodePlaygroundDemo.gif)
+
 ## ✨ Features
 
 - **Integrated Environment**: Write code in your main editor, manage Input/Output in the sidebar.
