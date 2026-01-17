@@ -2,13 +2,16 @@
   "name": "code-playground",
   "displayName": "Code Playground",
   "description": "A sleek Code Playground sidebar for running code, testing inputs, and taking notes.",
-  "version": "0.0.5",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.80.0"
   },
+  "publisher": "sauravgpt",
+  "icon": "media/icon.png",
+  "license": "LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/placeholder/code-playground"
+    "url": "https://github.com/sauravgpt/code_playground"
   },
   "categories": [
     "Other"
