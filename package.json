@@ -1,0 +1,96 @@
+{
+  "name": "code-playground",
+  "displayName": "Code Playground",
+  "description": "A sleek Code Playground sidebar for running code, testing inputs, and taking notes.",
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/placeholder/code-playground"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-playground-container",
+          "title": "Code Playground",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "code-playground-container": [
+        {
+          "type": "webview",
+          "id": "code-playground.sidebar",
+          "name": "Playground",
+          "icon": "media/icon.svg",
+          "contextualTitle": "Code Playground"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "code-playground.refresh",
+        "title": "Refresh Playground",
+        "icon": {
+          "light": "media/refresh.svg",
+          "dark": "media/refresh.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "code-playground.refresh",
+          "when": "view == code-playground.sidebar",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Code Playground",
+      "properties": {
+        "codePlayground.executorMap": {
+          "type": "object",
+          "default": {
+            "python": "python3 -u $fileName",
+            "javascript": "node $fileName",
+            "c": "gcc $fileName -o $fileNameWithoutExt && (./$fileNameWithoutExt; rm $fileNameWithoutExt)",
+            "cpp": "g++ $fileName -o $fileNameWithoutExt && (./$fileNameWithoutExt; rm $fileNameWithoutExt)",
+            "java": "javac $fileName && (java -cp . $fileNameWithoutExt; rm $fileNameWithoutExt.class)"
+          },
+          "description": "Map language IDs to execution commands. Variables: $fileName, $fileNameWithoutExt, $dir."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
+  }
+}
